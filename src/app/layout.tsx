@@ -1,26 +1,21 @@
+"use client"
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThirdwebProvider } from "thirdweb/react";
+import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { Navbar } from "../../components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const activeChain = "sepolia";
 
-export const metadata: Metadata = {
-  title: "thirdweb SDK + Next starter",
-  description:
-    "Starter template for using thirdweb SDK with Next.js App router",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function MyApp() {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThirdwebProvider>{children}</ThirdwebProvider>
-      </body>
-    </html>
+    <ThirdwebProvider activeChain={activeChain}>
+      <ChakraProvider>
+        <Navbar />
+      </ChakraProvider>
+    </ThirdwebProvider>
   );
 }
+
