@@ -11,11 +11,16 @@ const activeChain = "sepolia";
 
 export default function MyApp() {
   return (
-    <ThirdwebProvider activeChain={activeChain}>
+    <html>
+      <body>
+      <ThirdwebProvider activeChain={activeChain}>
       <ChakraProvider>
         <Navbar />
       </ChakraProvider>
     </ThirdwebProvider>
+      </body>
+    </html>
+   
   );
 }
 
